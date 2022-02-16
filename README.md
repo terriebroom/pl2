@@ -1,4 +1,11 @@
 # pl2
+GEOJSON
+
+ArcGIS Online web map Item Page:
+https://fleming.maps.arcgis.com/home/item.html?id=05031a6cced14529af455b298f963047
+
+AGOL Schema
+
 Hosted layer (schema) for Ontario Trees REST API
 https://services3.arcgis.com/N1hu3eUbyNPcZNpd/arcgis/rest/services/trees_of_ontario/FeatureServer/0
 
