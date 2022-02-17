@@ -17,3 +17,6 @@ https://teopvtyksnwtq31e.maps.arcgis.com/home/item.html?id=98bb492fe99a41d0ab46c
 
 Developers Details Item Page:
 https://developers.arcgis.com/layers/44e98e6b1e1840089b1c03ae9fc97467
+
+Valentine's Story Map:
+https://terriebroom.github.io/pl2/lovesdarkabyss.html
