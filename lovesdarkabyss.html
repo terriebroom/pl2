@@ -1,1 +1,203 @@
 
+<!DOCTYPE html>
+<!--Terrie-Ann Broomfield
+GEOM99
+February 2022
+Practical Lab 2
+Story Map from Tutorial 3-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Love&#39;s Dark Abyss</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    
+      #heading{
+        position:absolute;
+        left:0px;
+        top:0px;
+        z-index: 5;
+        background-color: rgba(232, 199, 200, 0.8);
+        height:200px;
+        width:100%;
+        color:rgb(0, 0, 0);
+        padding: 0px;
+        padding-left: 0px;
+        text-align: center;
+        font-family: cursive; 
+        line-height: 35px;
+      }
+
+      #subheading{
+        line-height: 20px;
+        font-family: cursive;
+      }
+    #body{
+        line-height: 20px;
+        font-family: cursive; 
+    }
+    #pic{
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        z-index: 2;
+        padding: 10px;
+        padding-left: 15px;
+      }
+
+    
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.22/"></script>
+  <script>
+
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
+    "esri/Graphic",
+    "esri/layers/GraphicsLayer"
+
+    ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+
+  esriConfig.apiKey = "AAPK144901099bb043dfbb877d13892dd5a8eZ4jROWPVn4PetSl3bZSbSYZvYbtfB8yR57A_S69h9jrwH6GVvIj5NBLXtiQxh1n";
+
+  const map = new Map({
+    basemap: "arcgis-midcentury" //Basemap
+  });
+
+  const view = new MapView({
+    map: map,
+    center: [-77.65853431585994, 17.86825641436599], //Location (Long, Lat)
+    zoom: 14,
+    container: "viewDiv"
+ });
+
+ const graphicsLayer = new GraphicsLayer();
+ map.add(graphicsLayer);
+ 
+ const point = { //Create marker
+    type: "point",
+    longitude: -77.65853431585994,
+    latitude: 17.86825641436599
+ };
+ const simpleMarkerSymbol = {
+    type: "simple-marker",
+    color: [102, 0, 0],  //Marker colour - wine red
+    outline: {
+        color: [102, 0, 0], // Marker outline
+        width: 1
+    }
+ };
+
+ const pointGraphic = new Graphic({
+    geometry: point,
+    symbol: simpleMarkerSymbol
+ });
+ graphicsLayer.add(pointGraphic);
+
+ // Create a broken heart line geometry
+ const polyline = {
+    type: "polyline",
+    paths: [
+        [-77.66040120273829, 17.860255645458267], //Longitude, latitude
+        [-77.66055107116699, 17.860775488395273],
+        [-77.66002535820007, 17.861337134059276],
+        [-77.66110897064209, 17.862562536622498],
+        [ -77.6598858833313, 17.863869623380552],
+        [-77.66158103942871, 17.865074585472225],
+        [-77.66001462936401, 17.865891504278377],
+        [-77.66132354736328, 17.86740279417213],
+        [-77.65990734100342, 17.86832181552708],
+        [-77.66124844551085, 17.869924985848264],
+        [-77.66023993492125, 17.870986950581973] 
+    ]
+ };
+ const simpleLineSymbol = {
+    type: "simple-line",
+    color: [102, 0, 0, 0.4], // blood red
+    width: 1
+ };
+
+ const polylineGraphic = new Graphic({
+    geometry: polyline,
+    symbol: simpleLineSymbol
+ });
+ graphicsLayer.add(polylineGraphic);
+
+ // Create a heart polygon geometry
+ const polygon = {
+    type: "polygon",
+    rings: [
+        [-77.66040086746214, 17.86025468810338], //Longitude, latitude
+        [-77.65430688858032, 17.866299962273565], 
+        [-77.65374898910522, 17.86901618406581],  
+        [-77.6551866531372, 17.871303496534402],   
+        [-77.65827655792236, 17.872345030849377],
+        [-77.66025066375732, 17.870976739412832],
+        [-77.66243934631346, 17.872447141728127],
+        [-77.66499280929565, 17.8714260303001],
+        [-77.66690254211426, 17.86960843744027],
+        [-77.66673088073729, 17.866626727993918],
+        [-77.66040086746214, 17.86025468810338]
+    ]
+ };
+
+ const simpleFillSymbol = {
+    type: "simple-fill",
+    color: [255, 116, 140, 0.4],  // Pink, opacity 40%
+    outline: {
+        color: [102, 0, 0, 0.4], //Black Outline
+        width: 1
+    }
+ };
+
+ const popupTemplate = {
+    title: "{Name}",
+    content: "{Description}"
+ }
+ const attributes = {
+    Name: "Graphic",
+    Description: "heart polygon"
+ }
+
+ const polygonGraphic = new Graphic({
+    geometry: polygon,
+    symbol: simpleFillSymbol,
+
+    attributes: attributes,
+    popupTemplate: popupTemplate
+
+ });
+ graphicsLayer.add(polygonGraphic);
+
+ });
+</script>
+</head>
+<body>
+ 
+  <div id="heading">
+    <h1>Love&#39;s Dark Abyss - The Romeo and Juliet of the Caribbean</h1>
+    <div id="subheading">
+         <h2>(Based on the true story of Lover's Leap)</h2>
+    </div>
+    <div id="body">
+        <p>Mizzy and Tunkey, enslaved lovers on neighbouring plantations, were torn apart by Richard Chardley, Mizzy's &#8220;owner&#8222;.
+            Chardley was jealous of their love and planned to have Tunkey sold to another plantation far away from his lover.
+            The couple heard of his plot and decided to run away together. They were then chased by Chardley's men when they came upon a cliff.
+            There was no escape. They had no choice but literally take the leap of faith. Legends say their story continues in the skies.</p>
+    </div>
+  </div>
+  <div id="pic">
+    <img src="loversleap.jpg" alt="loversleap" class= "pic">
+  </div>
+  <div id="viewDiv"></div>
+</body>
+</html>
+
